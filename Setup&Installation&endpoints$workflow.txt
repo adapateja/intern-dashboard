@@ -1,0 +1,93 @@
+Setup & Installation
+Prerequisites
+
+Node.js (LTS)
+
+npm
+
+MongoDB running locally (or a cloud MongoDB URI)
+
+1. Clone repo
+git clone <your-repo-url> intern-dashboard
+cd intern-dashboard
+
+Backend Setup
+cd backend
+npm install
+
+
+Create backend/.env:
+
+PORT=5000
+MONGO_URI=mongodb://127.0.0.1:27017/intern_dashboard
+JWT_SECRET=super_secret_jwt_key_change_this
+CORS_ORIGIN=http://localhost:5173
+
+
+Run backend in dev mode:
+
+npm run dev
+
+
+(Uses nodemon to auto-restart on changes.)
+
+Frontend Setup
+cd ../frontend
+npm install
+
+
+Create frontend/.env:
+
+VITE_API_BASE_URL=http://localhost:5000/api
+
+
+Run frontend:
+
+npm run dev
+
+
+Open: http://localhost:5173
+
+Usage Flow
+
+Go to /register and create a new account.
+
+You’ll be auto-logged-in and redirected to /dashboard.
+
+Create tasks using the “Create New Task” form.
+
+Search/filter tasks using the search bar and status filter.
+
+Edit or delete tasks from the list.
+
+Update your profile from /profile.
+
+Logout using the navbar button.
+
+API Overview
+
+Base URL: http://localhost:5000/api
+
+Auth
+
+POST /auth/register
+
+POST /auth/login
+
+User
+
+GET /users/me
+
+PUT /users/me
+
+Tasks
+
+GET /tasks (optional query: search, status)
+
+POST /tasks
+
+PUT /tasks/:id
+
+DELETE /tasks/:id
+
+For more details: see backend/src/docs/api-docs.md.
